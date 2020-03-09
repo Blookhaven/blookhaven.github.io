@@ -35,5 +35,48 @@
 	inline svg
 	<div class="inlinesvg"></div>
 </main>
+<script type="text/javascript">
+
+var query;
+var year = 2000 + Number(document.location.href.substring(document.location.href.indexOf('tennis_') + 7,document.location.href.indexOf('tennis_') + 9));
+var yearToLoad = year;
+
+function getQueryParams(qs) {
+	qs = qs.split('+').join(' ');
+
+	var params = {},
+	tokens,
+	re = /[?&]?([^=]+)=([^&]*)/g;
+
+	while (tokens = re.exec(qs)) {
+		params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+	}
+	return params;
+};
+
+function getFixtures(){//console.log('getFixtures')
+	// console.log("cdnhosted.aap.com.au/Rest/v1/SportsData/Tennis/Fixtures/" + tournaments[query.t].replace(/tralian/g,'').replace(/ /g,'') + yearToLoad + "?apikey=918704ec-4811-45b6-a169-16bae3df69a8&format=json")
+	jQuery.ajax({
+		url: "//cdnhosted.aap.com.au/Rest/v1/SportsData/Tennis/Fixtures/" + tournaments[query.t].replace(/tralian/g,'').replace(/ /g,'') + yearToLoad + "?apikey=918704ec-4811-45b6-a169-16bae3df69a8&format=json",
+		type: 'GET',
+		dataType: 'json',
+		success: function(info){
+			fixtures = info;
+			// addFixtures();
+			console.log(fixtures)
+		},
+		error:function(err){
+			throw(err);
+			// yearToLoad --;
+			// getOldFixtures();
+		}
+	})
+}
+
+$(document).ready(function(){
+	query = getQueryParams(document.location.search);
+	getFixtures();
+}
+</script>
 </body>
 </html>

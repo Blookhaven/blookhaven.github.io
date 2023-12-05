@@ -1,1 +1,592 @@
+html{
+	scroll-behavior: smooth;
+}
+body{
+	margin: 0;
+	padding: 0;
+	font-family: helvetica, arial, sans-serif;
+	background-color: #000;
+	color: #fff;
+}
+#background{
+	position: fixed;
+	width: 100vw;
+	/*height: 3760px;*/
+	height: 5000px;
+	/*background-color: #fc0;*/
+	background-position: top center;
+	background-size: 25%;
+	/*background-repeat: repeat-y;*/
+	background-image: url(../images/sourdoughRepeat.png);
+	z-index: -2;
+	/*left: 50%;*/
+	/*margin-left: -25%;*/
 
+	display: flex;
+	flex-direction: column;
+	/*align-items: flex-end;*/
+	/*align-content: flex-end;*/
+	justify-content: flex-end;
+}
+#background2{
+	position: fixed;
+	width: 100vw;
+	/*height: 3760px;*/
+	height: 5000px;
+	/*background-color: #fc0;*/
+	background-position: top center;
+	background-size: 25%;
+	/*background-repeat: repeat-y;*/
+	background-image: url(../images/sourdoughHalfDrop.png);
+	z-index: -3;
+	/*left: 50%;*/
+	/*margin-left: -25%;*/
+
+	display: flex;
+	flex-direction: column;
+	/*align-items: flex-end;*/
+	/*align-content: flex-end;*/
+	justify-content: flex-end;
+	filter: blur(2px);
+}
+#base{
+	width: 50%;
+	height: 50px;
+	background-color: #00f;
+}
+#foreground{
+	z-index: 2;
+
+	background-color: rgba(0,0,0,0.5);
+	max-width: 800px;
+	width: 100%;
+	margin: auto;
+	/*margin-bottom: 60px;*/
+	padding-bottom: 100px;
+}
+.fog{
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: -1;
+}
+.fog_01{
+	background-image: url(../images/fog_01.png);
+	animation: fogA 15s infinite;
+}
+.fog_02{
+	background-image: url(../images/fog_02.png);
+	animation: fogB 15s infinite;
+}
+/*.fog_03{
+	background-image: url(../images/fog_03.png);
+	animation: fogC 15s infinite;
+}*/
+@keyframes fogA{
+	0%{
+		/*opacity: 0.5;*/
+		opacity: 0.75;
+	}
+	50%{
+		opacity: 0;
+	}
+	100%{
+		/*opacity: 0.5;*/
+		opacity: 0.75;
+	}
+}
+@keyframes fogB{
+	0%{
+		opacity: 0;
+	}
+	50%{
+		/*opacity: 0.5;*/
+		opacity: 0.75;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+/*@keyframes fogC{
+	0%{
+		opacity: 0;
+	}
+	25%{
+		opacity: 0.25;
+	}
+	50%{
+		opacity: 0;
+	}
+	75%{
+		opacity: 0.25;
+	}
+	100%{
+		opacity: 0;
+	}
+}*/
+
+.container{
+	position: relative;
+	margin: auto;
+
+	max-width: 700px;
+	max-height: 700px;
+
+	width: 100vw;
+	height: 100vw;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+
+	/*background-color: rgba(0,0,0,0.5);*/
+}
+
+.circle{
+	position: absolute;
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-ms-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+	background-repeat: no-repeat;
+	transition: all 0.5s ease-out;
+}
+
+.circle.innerGlyphs{
+	background-image: url(../images/innerGlyphs.png);
+}
+.circle.innerSymbols{
+	background-image: url(../images/innerSymbols.png);
+}
+.circle.largeRings{
+	background-image: url(../images/largeRings.png);
+}
+.circle.outerGlyphs{
+	background-image: url(../images/outerGlyphs.png);
+}
+.circle.outerSymbols{
+	background-image: url(../images/outerSymbols.png);
+}
+.circle.runes{
+	background-image: url(../images/runes.png);
+}
+.circle.smallRings{
+	background-image: url(../images/smallRings.png);
+}
+
+.grey{
+	filter: grayscale(100%) opacity(80%);
+}
+
+.rollover{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: 50%;
+	left: 50%;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.rollover.lammas{
+	top: 0px;
+	width: 5.714285714%;
+	height: 5.714285714%;
+	margin-left: -2.857142857%;
+}
+.rollover.fermentation{
+	left: unset;
+	right: 0px;
+	width: 5.714285714%;
+	height: 5.714285714%;
+	margin-top: -2.857142857%;
+}
+.rollover.water{
+	top: unset;
+	bottom: 0px;
+	left: 50%;
+	width: 5.714285714%;
+	height: 5.714285714%;
+	margin-left: -2.857142857%;
+}
+.rollover.salt{
+	left: 0px;
+	width: 5.714285714%;
+	height: 5.714285714%;
+	margin-top: -2.857142857%;
+}
+.rollover.outside{
+	width: 88.57142857%;
+	height: 88.57142857%;
+	margin: -44.28571429% 0 0 -44.28571429%;
+	border-radius: 50%;
+}
+.rollover.runes{
+	width: 81.42857143%;
+	height: 81.42857143%;
+	margin: -40.71428571% 0 0 -40.71428571%;
+}
+.rollover.farmer{
+	width: 7.142857143%;
+	height: 18.57142857%;
+	top: 50%;
+	left: 14.23714286%;
+	margin: -9.285714286% 0 0 -3.571428571%;
+	border-radius: unset;
+}
+.rollover.miller{
+	width: 18.14814286%;
+	height: 9.333285714%;
+	top: 13.44442857%;
+	left: 50%;
+	margin: -4.666642857% 0 0 -9.074071429%;
+}
+.rollover.baker{
+	width: 7.142857143%;
+	height: 18.57142857%;
+	top: 50%;
+	left: 86.36571429%;
+	margin: -9.285714286% 0 0 -3.571428571%;
+	border-radius: unset;
+}
+.rollover.thisisfuck{
+	width: 16.85914286%;
+	height:10%;
+	top: 86.45914286%;
+	left: 50%;
+	margin: -5% 0 0 -8.429571429%;
+	border-radius: unset;
+}
+.rollover.inside{
+	width: 62.85714286%;
+	height: 62.85714286%;
+	margin: -31.42857143% 0 0 -31.42857143%;
+}
+.rollover.innerGlyphs{
+	width: 57.14285714%;
+	height: 57.14285714%;
+	margin: -28.57142857% 0 0 -28.57142857%;
+}
+.blocker{
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	top: 50%;
+	left: 50%;
+	border-radius: 50%;
+	margin: -25% 0 0 -25%;
+}
+.rollover.top{
+	width: 16.46685714%;
+	height: 16.46685714%;
+	top: 33.16514286%;
+	margin: -8.233428571% 0 0 -8.233428571%;
+}
+.rollover.left{
+	width: 16.46685714%;
+	height: 16.46685714%;
+	top: 58.57157143%;
+	left: 35.33414286%;
+	margin: -8.233428571% 0 0 -8.233428571%;
+}
+.rollover.right{
+	width: 16.46685714%;
+	height: 16.46685714%;
+	top: 58.57157143%;
+	left: 64.66842857%;
+	margin: -8.233428571% 0 0 -8.233428571%;
+}
+.rollover.roll{
+	width: 14.89285714%;
+	height: 7.467%;
+	top: 42.65428571%;
+	left: 35.01585714%;
+	margin: -3.7335% 0 0 -7.446428571%;
+	border-radius: unset;
+}
+.rollover.pretzel{
+	width: 11.68585714%;
+	height: 9.319857143%;
+	top: 42.65428571%;
+	left: 65.05985714%;
+	margin: -4.659928571% 0 0 -5.842928571%;
+	border-radius: unset;
+}
+.rollover.slice{
+	width: 10.425%;
+	height: 11.91428571%;
+	top: 67.09671429%;
+	left: 50%;
+	margin: -5.957142857% 0 0 -5.2125%;
+	border-radius: unset;
+}
+.rollover.hat{
+	width: 12.33457143%;
+	height: 12.33457143%;
+	top: 49.72614286%;
+	left: 50%;
+	margin: -6.167285714% 0 0 -6.167285714%;
+	border-radius: unset;
+}
+
+/*********************************/
+
+h2{
+	margin: unset;
+}
+
+hr{
+	max-width: 700px;
+	width: 100vw;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+a:link{
+	color: #f00;
+	text-decoration: unset;
+	font-weight: bold;
+}
+a:visited{
+	color: #f00;
+}
+
+.container.heading{
+	display: flex;
+	align-items: center;
+	height: unset;
+}
+
+.container.info{
+	display: flex;
+	align-items: center;
+	height: unset;
+	margin-bottom: 40px;
+}
+/*701px - horiz scroll bar*/
+.text{
+	display: block;
+	padding: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.symbol{
+	background-position: center;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-ms-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.glyph{
+	max-width: 120px;
+	width: 100vw;
+}
+
+.symbol.glyph{
+	max-height: 70px;
+	height: 100vw;
+}
+
+.symbol.lammas{background-image: url(../images/symbols/symbol_lammas.png);}
+.symbol.capricorn{background-image: url(../images/symbols/symbol_capricorn.png);}
+.symbol.water{background-image: url(../images/symbols/symbol_water.png);}
+.symbol.salt{background-image: url(../images/symbols/symbol_salt.png);}
+.symbol.scorpio{background-image: url(../images/symbols/symbol_scorpio.png);}
+.symbol.earth{background-image: url(../images/symbols/symbol_earth.png);}
+.symbol.daynight{background-image: url(../images/symbols/symbol_daynight.png);}
+.symbol.sun{background-image: url(../images/symbols/symbol_sun.png);}
+.symbol.gemini{background-image: url(../images/symbols/symbol_gemini.png);}
+.symbol.fire{background-image: url(../images/symbols/symbol_fire.png);}
+.symbol.bread{background-image: url(../images/symbols/symbol_bread.png);}
+.symbol.leo{background-image: url(../images/symbols/symbol_leo.png);}
+.symbol.honey{background-image: url(../images/symbols/symbol_honey.png);}
+.symbol.puttur{background-image: url(../images/symbols/symbol_puttur.png);}
+.symbol.pappur{background-image: url(../images/symbols/symbol_pappur.png);}
+.symbol.sublimation{background-image: url(../images/symbols/symbol_sublimation.png);}
+
+.symbol.largeRings{
+	max-width: 260px;
+	max-height: 260px;
+	width: 100vw;
+	height: 100vw;
+	background-image: url(../images/symbols/symbol_largerings.png);
+}
+
+.symbol.crest{
+	max-width: 360px;
+	max-height: 100px;
+	width: 100vw;
+	height: 100vw;
+}
+
+.symbol.crest.farmer{background-image: url(../images/symbols/symbol_farmer.png);}
+.symbol.crest.miller{background-image: url(../images/symbols/symbol_miller.png);}
+.symbol.crest.baker{background-image: url(../images/symbols/symbol_baker.png);}
+.symbol.crest.thisisfuck{background-image: url(../images/symbols/symbol_thisisfuck.png);}
+
+.symbol.smallRings{
+	max-width: 260px;
+	max-height: 260px;
+	width: 100vw;
+	height: 100vw;
+	background-image: url(../images/symbols/symbol_smallrings.png);
+}
+
+.symbol.runes{
+	max-width: 360px;
+	max-height: 100px;
+	width: 100vw;
+	height: 100vw;
+	background-image: url(../images/symbols/symbol_itsbread.png);
+}
+
+.symbol.pictogram{
+	max-width: 250px;
+	max-height: 140px;
+	width: 100vw;
+	height: 100vw;
+}
+
+.symbol.pictogram.loaf{background-image: url(../images/symbols/symbol_loaf.png);}
+.symbol.pictogram.pretzel{background-image: url(../images/symbols/symbol_pretzel.png);}
+.symbol.pictogram.slice{background-image: url(../images/symbols/symbol_slice.png);}
+.symbol.pictogram.hat{background-image: url(../images/symbols/symbol_hat.png);}
+
+.symbol.recipe{
+	max-width: 12px;
+	max-height: 12px;
+	height: 12px;
+}
+
+.text ul{
+	line-height: 30px;
+}
+
+.text ul li img{
+	height: 24px;
+	margin: -8px -8px -6px -4px;
+}
+
+.container.tweet{
+	max-width: 550px;
+	height: unset;
+	margin-bottom: 40px;
+}
+
+.container.gallery{
+	height: unset;
+	margin-bottom: 40px;
+}
+
+/*swiper*/
+.swiper{
+	max-width: 700px;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.swiper-wrapper{
+/*	height: 0px;*/
+/*	padding-bottom: 75%;*/
+}
+.swiper-slide .gallery-image{
+	height: 0px;
+	padding-bottom: 75%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+    margin-top: 30px;
+    cursor: grab;
+}
+.swiper-slide .caption{
+	color: #fff;
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+    line-height: 20px;
+    background-color: rgba(0,0,0,0.5);
+    height: 30px;
+    margin-bottom: 30px;
+    padding-left: 10px;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.swiper-button{
+    margin-top: -37px;
+    color: #f00;
+    cursor: pointer;
+}
+.swiper-pagination-bullet-active{
+    background-color: #f00;
+    cursor: pointer;
+}
+.original{
+	background-image: url(../images/gallery/01-original.jpg);
+}
+.jam{
+	background-image: url(../images/gallery/02-raspberry-jam.jpg);
+}
+.in-situ{
+	background-image: url(../images/gallery/03-in-situ.jpg);
+}
+.me-loaf{
+	background-image: url(../images/gallery/04-me-loaf.jpg);
+}
+.toast{
+	background-image: url(../images/gallery/05-toast.jpg);
+}
+/*swiper*/
+
+footer{
+	position: fixed;
+	bottom: 0px;
+	/*width: 100vw;*/
+	max-width: 800px;
+	width: 100%;
+	margin: auto;
+	height: 100px;
+	font-size: 10px;
+	display: flex;
+	align-items: flex-end;
+	/*background-color: rgba(0,0,0,0.75);*/
+	color: rgba(255,255,255,0.5);
+	padding-left: 10px;
+	padding-bottom: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+
+	background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.25),rgba(0,0,0,1));
+    
+    z-index: 3;
+    pointer-events: none;
+}
+
+*{
+    -ms-user-select:none;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	-webkit-touch-callout: none;
+	-khtml-user-select: none;
+	user-select:none;
+}
